@@ -15,3 +15,16 @@ export function getTripDetail() {
         type: "GET_TRIP_DETAIL",
     }
 }
+
+export function bookSeat(trip) {
+	return {
+		type: "BOOK_SEAT",
+		payload: trip
+	}
+}
+
+export function pickSeat() {
+	return {
+		type: "PICK_SEAT",
+	}
+}
