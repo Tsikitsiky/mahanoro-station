@@ -38178,6 +38178,7 @@ const Container = _styledComponents.default.div`
     align-items: center;
     background-color: #0F0E17;
     color: white;
+    padding: 0 3rem;
 `;
 exports.Container = Container;
 const Title = _styledComponents.default.h1`
@@ -38243,17 +38244,43 @@ var _reactRouterDom = require("react-router-dom");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const Container = _styledComponents.default.div``;
+const Container = _styledComponents.default.div`
+    max-width: 950px;
+    margin: 0 auto;
+`;
 exports.Container = Container;
-const Title = _styledComponents.default.h2``;
+const Title = _styledComponents.default.h2`
+    font-size: 65px;
+    font-weight: 700;
+    line-height: 75px;
+`;
 exports.Title = Title;
-const List = _styledComponents.default.ul``;
+const List = _styledComponents.default.ul`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-height: 250px;
+    gap: 30px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+`;
 exports.List = List;
-const Town = _styledComponents.default.li``;
+const Town = _styledComponents.default.li`
+    background-color: #0F0E17;
+`;
 exports.Town = Town;
-const Link = (0, _styledComponents.default)(_reactRouterDom.Link)``;
+const Link = (0, _styledComponents.default)(_reactRouterDom.Link)`
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #ffffff;
+`;
 exports.Link = Link;
-const Name = _styledComponents.default.p``;
+const Name = _styledComponents.default.p`
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 42px; 
+`;
 exports.Name = Name;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"src/components/feed/index.js":[function(require,module,exports) {
 "use strict";
@@ -38329,29 +38356,79 @@ var _reactRouterDom = require("react-router-dom");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const Container = _styledComponents.default.div``;
+const Container = _styledComponents.default.div`
+    max-width: 950px;
+    margin: 0 auto;
+`;
 exports.Container = Container;
-const Title = _styledComponents.default.h2``;
+const Title = _styledComponents.default.h2`
+    font-size: 65px;
+    font-weight: 400;
+    line-height: 75px;
+`;
 exports.Title = Title;
-const List = _styledComponents.default.ul``;
+const List = _styledComponents.default.ul`
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 42px;
+
+`;
 exports.List = List;
-const Span = _styledComponents.default.span``;
+const Span = _styledComponents.default.span`
+    color: #E53170;
+`;
 exports.Span = Span;
-const Trip = _styledComponents.default.li``;
+const Trip = _styledComponents.default.li`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+    max-height: 93px;
+`;
 exports.Trip = Trip;
-const Group = _styledComponents.default.div``;
+const Group = _styledComponents.default.div`
+    display: flex;
+    flex-direction: column;
+`;
 exports.Group = Group;
-const Day = _styledComponents.default.p``;
+const Day = _styledComponents.default.p`
+    color: #FFCC4D;
+    margin: 0;
+`;
 exports.Day = Day;
-const Date = _styledComponents.default.p``;
+const Date = _styledComponents.default.p`
+    margin: 0;
+`;
 exports.Date = Date;
-const Time = _styledComponents.default.p``;
+const Time = _styledComponents.default.p`
+    color: #FFCC4D;
+    margin: 0;     
+`;
 exports.Time = Time;
-const Seats = _styledComponents.default.p``;
+const Seats = _styledComponents.default.p`
+    margin: 0;
+`;
 exports.Seats = Seats;
-const Button = _styledComponents.default.button``;
+const Button = _styledComponents.default.button`
+    background-color: #E53170;
+    padding: 1rem 1.5rem ;
+    outline: none;
+    border: none;
+    &:hover {
+        background-color: linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), #E53170;;
+    }
+`;
 exports.Button = Button;
-const Link = (0, _styledComponents.default)(_reactRouterDom.Link)``;
+const Link = (0, _styledComponents.default)(_reactRouterDom.Link)`
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 42px;
+`;
 exports.Link = Link;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"src/components/tripDetail/index.js":[function(require,module,exports) {
 "use strict";
@@ -38461,7 +38538,7 @@ TripDetail.Link = function TripDetailLink({
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ButtonCheck = exports.ModalText = exports.ModalTitle = exports.CloseButton = exports.InnerModal = exports.Modal = exports.Link = exports.Detail = exports.Info = exports.BookButton = exports.SeatButton = exports.Group = exports.SubTitle = exports.Span = exports.Title = exports.Pan = exports.Container = void 0;
+exports.ButtonCheck = exports.ModalText = exports.ModalTitle = exports.CloseButton = exports.InnerModal = exports.Modal = exports.Link = exports.Detail = exports.Info = exports.BookButton = exports.SeatButton = exports.Wrapper = exports.Group = exports.SubTitle = exports.Span = exports.Title = exports.Pan = exports.Container = void 0;
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
@@ -38469,39 +38546,144 @@ var _reactRouterDom = require("react-router-dom");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const Container = _styledComponents.default.div``;
+const Container = _styledComponents.default.div`
+    max-width: 950px;
+    margin: 0 auto;
+    display: flex;
+    gap: 2rem;
+`;
 exports.Container = Container;
-const Pan = _styledComponents.default.div``;
+const Pan = _styledComponents.default.div`
+    
+`;
 exports.Pan = Pan;
-const Title = _styledComponents.default.h2``;
+const Title = _styledComponents.default.h2`
+    font-size: 65px;
+    font-weight: 400;
+    line-height: 75px;
+`;
 exports.Title = Title;
-const Span = _styledComponents.default.span``;
+const Span = _styledComponents.default.span`
+    color: #E53170;
+`;
 exports.Span = Span;
-const SubTitle = _styledComponents.default.h3``;
+const SubTitle = _styledComponents.default.h3`
+    text-transform: uppercase;
+    font-size: 24px;
+    line-height: 28px;
+`;
 exports.SubTitle = SubTitle;
-const Group = _styledComponents.default.div``;
+const Group = _styledComponents.default.div`
+    
+`;
 exports.Group = Group;
-const SeatButton = _styledComponents.default.button``;
+const Wrapper = _styledComponents.default.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+`;
+exports.Wrapper = Wrapper;
+const SeatButton = _styledComponents.default.button`
+    background-image: url('../icons/emojione_seat.svg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    border: none;
+    outline: none;
+    width: 59px;
+    height: 59px; 
+`;
 exports.SeatButton = SeatButton;
-const BookButton = _styledComponents.default.button``;
+const BookButton = _styledComponents.default.button`
+    background-color: #E53170;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 28px;
+    padding: 1rem 1.5rem;
+    border: none;
+    outline: none;
+`;
 exports.BookButton = BookButton;
-const Info = _styledComponents.default.p``;
+const Info = _styledComponents.default.span`
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #2F2F2F;
+`;
 exports.Info = Info;
-const Detail = _styledComponents.default.p``;
+const Detail = _styledComponents.default.p`
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #A7A9BE;
+
+`;
 exports.Detail = Detail;
-const Link = (0, _styledComponents.default)(_reactRouterDom.Link)``;
+const Link = (0, _styledComponents.default)(_reactRouterDom.Link)`
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+`;
 exports.Link = Link;
-const Modal = _styledComponents.default.div``;
+const Modal = _styledComponents.default.div`
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
 exports.Modal = Modal;
-const InnerModal = _styledComponents.default.div``;
+const InnerModal = _styledComponents.default.div`
+    max-width: 773px;
+    max-height: 593px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 3rem;
+    background-color: #ffffff;
+    margin: auto;
+    text-align: center;
+`;
 exports.InnerModal = InnerModal;
-const CloseButton = _styledComponents.default.button``;
+const CloseButton = _styledComponents.default.button`
+    align-self: flex-end;
+`;
 exports.CloseButton = CloseButton;
-const ModalTitle = _styledComponents.default.h3``;
+const ModalTitle = _styledComponents.default.h3`
+    padding-left: 80px;
+    background-image: url('../icons/confirm.svg');
+    background-repeat: no-repeat;
+    background-size: 71px;
+    background-position: left 50%;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 43px;
+    text-transform: uppercase;
+    color: #000000;
+    height: 71px;
+    margin: 0
+`;
 exports.ModalTitle = ModalTitle;
-const ModalText = _styledComponents.default.p``;
+const ModalText = _styledComponents.default.p`
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #000000;
+    max-width: 500px;
+`;
 exports.ModalText = ModalText;
-const ButtonCheck = _styledComponents.default.button``;
+const ButtonCheck = _styledComponents.default.button`
+    background-color: #E53170;
+    outline: none;
+    border: none;
+    padding: 1rem 1.5rem;
+`;
 exports.ButtonCheck = ButtonCheck;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"src/components/booking/index.js":[function(require,module,exports) {
 "use strict";
@@ -38582,6 +38764,13 @@ Booking.Group = function BookinGroup({
   return /*#__PURE__*/_react.default.createElement(_booking.Group, restProps, children);
 };
 
+Booking.Wrapper = function BookinWrapper({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_booking.Wrapper, restProps, children);
+};
+
 Booking.Span = function BookinSpan({
   children,
   ...restProps
@@ -38652,33 +38841,107 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const Container = _styledComponents.default.div``;
+const Container = _styledComponents.default.div`
+    max-width: 1174px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2rem
+`;
 exports.Container = Container;
 const Pan = _styledComponents.default.div``;
 exports.Pan = Pan;
-const Title = _styledComponents.default.h2``;
+const Title = _styledComponents.default.h2`
+    font-size: 65px;
+    font-weight: 400;
+    line-height: 75px;
+`;
 exports.Title = Title;
-const Span = _styledComponents.default.span``;
+const Span = _styledComponents.default.span`
+    color: #E53170;
+`;
 exports.Span = Span;
-const SubTitle = _styledComponents.default.h3``;
+const SubTitle = _styledComponents.default.h3`
+    text-transform: uppercase;
+    font-size: 24px;
+    line-height: 28px;
+`;
 exports.SubTitle = SubTitle;
-const Form = _styledComponents.default.form``;
+const Form = _styledComponents.default.form`
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 444px;
+`;
 exports.Form = Form;
-const Input = _styledComponents.default.input``;
+const Input = _styledComponents.default.input`
+    background-color: #000000;
+    color: #FF8906;
+    padding: 1rem;
+    margin-top: 10px;
+    outline: none;
+    border: none;
+    width: 90%;
+`;
 exports.Input = Input;
-const InputLabel = _styledComponents.default.label``;
+const InputLabel = _styledComponents.default.label`
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: #0F0E17;
+`;
 exports.InputLabel = InputLabel;
-const List = _styledComponents.default.ul``;
+const List = _styledComponents.default.ul`
+    padding: 0;
+    margin: 0;
+    list-style: none;
+`;
 exports.List = List;
-const Trip = _styledComponents.default.li``;
+const Trip = _styledComponents.default.li`
+    background-image: url('../icons/noto-v1_bus.svg');
+    background-repeat: no-repeat;
+    background-size: 65px;
+    background-position: left;
+    padding-left: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+`;
 exports.Trip = Trip;
-const Group = _styledComponents.default.div``;
+const Group = _styledComponents.default.div`
+    display: flex;
+    flex-direction: column;
+`;
 exports.Group = Group;
-const Detail = _styledComponents.default.p``;
+const Detail = _styledComponents.default.p`
+    margin: 0;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+`;
 exports.Detail = Detail;
-const CancelButton = _styledComponents.default.button``;
+const CancelButton = _styledComponents.default.button`
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    outline: none;
+    border: none;
+    background-color: #FF8906;
+`;
 exports.CancelButton = CancelButton;
-const UpdateButton = _styledComponents.default.button``;
+const UpdateButton = _styledComponents.default.button`
+    background-color: #E53170;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #FFFFFF;
+    padding: 1rem 1.5rem;
+    outline: none;
+    border: none;
+    align-self: flex-end;
+`;
 exports.UpdateButton = UpdateButton;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/myAccount/index.js":[function(require,module,exports) {
 "use strict";
@@ -38849,6 +39112,7 @@ exports.getTrips = getTrips;
 exports.getTripDetail = getTripDetail;
 exports.bookSeat = bookSeat;
 exports.pickSeat = pickSeat;
+exports.getPrice = getPrice;
 
 function getTrips() {
   return async dispatch => {
@@ -38880,6 +39144,13 @@ function pickSeat() {
     type: "PICK_SEAT"
   };
 }
+
+function getPrice(price) {
+  return {
+    type: "GET_PRICE",
+    payload: price
+  };
+}
 },{}],"src/containers/booking.js":[function(require,module,exports) {
 "use strict";
 
@@ -38904,22 +39175,27 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function BookingContainer() {
   const trips = (0, _reactRedux.useSelector)(state => state.trips);
-  const bookedSeats = (0, _reactRedux.useSelector)(state => state.totalPrice);
-  console.log(bookedSeats);
+  const bookedSeats = (0, _reactRedux.useSelector)(state => state.seats.bookedSeats);
+  const totalPrice = (0, _reactRedux.useSelector)(state => state.seats.totalPrice);
   const {
     id
   } = (0, _reactRouterDom.useParams)();
   const trip = trips.find(trip => trip.id == id);
   const [showModal, setShowModal] = (0, _react.useState)(false);
   const dispatch = (0, _reactRedux.useDispatch)();
-  return /*#__PURE__*/_react.default.createElement(_components.Booking, null, /*#__PURE__*/_react.default.createElement(_components.Booking.Pan, null, /*#__PURE__*/_react.default.createElement(_components.Booking.Title, null), /*#__PURE__*/_react.default.createElement(_components.Booking.SubTitle, null, "Pick a seat"), /*#__PURE__*/_react.default.createElement(_components.Booking.Group, null, trip.seats.map(seat => /*#__PURE__*/_react.default.createElement(_components.Booking.SeatButton, {
-    onClick: () => dispatch(_actions.pickSeat),
+  return /*#__PURE__*/_react.default.createElement(_components.Booking, null, /*#__PURE__*/_react.default.createElement(_components.Booking.Pan, null, /*#__PURE__*/_react.default.createElement(_components.Booking.Title, null, /*#__PURE__*/_react.default.createElement("img", {
+    src: "../icons/noto-v1_bus.svg"
+  })), /*#__PURE__*/_react.default.createElement(_components.Booking.SubTitle, null, "Pick a seat"), /*#__PURE__*/_react.default.createElement(_components.Booking.Group, null, /*#__PURE__*/_react.default.createElement(_components.Booking.Wrapper, null, trip.seats.map(seat => /*#__PURE__*/_react.default.createElement(_components.Booking.SeatButton, {
+    onClick: () => {
+      dispatch((0, _actions.pickSeat)());
+      dispatch((0, _actions.getPrice)(trip.price));
+    },
     key: seat.id
-  }, seat.isAvailable ? "Free" : "Booked")))), /*#__PURE__*/_react.default.createElement(_components.Booking.Pan, null, /*#__PURE__*/_react.default.createElement(_components.Booking.Title, null, "Book a seat to: ", /*#__PURE__*/_react.default.createElement(_components.Booking.Span, null, trip.destination)), /*#__PURE__*/_react.default.createElement(_components.Booking.SubTitle, null, "Trip information"), /*#__PURE__*/_react.default.createElement(_components.Booking.Group, null, /*#__PURE__*/_react.default.createElement(_components.Booking.Detail, null, "Departure time: ", trip.departureTime), /*#__PURE__*/_react.default.createElement(_components.Booking.Detail, null, "Driver: ", trip.driverName), /*#__PURE__*/_react.default.createElement(_components.Booking.Detail, null, "Driver's contact: ", trip.driverContact), /*#__PURE__*/_react.default.createElement(_components.Booking.Detail, null, "Estimated duration: ", trip.estimatedDuration), /*#__PURE__*/_react.default.createElement(_components.Booking.Detail, null, "Breaks: ", trip.breaks), /*#__PURE__*/_react.default.createElement(_components.Booking.Detail, null, trip.price, "Ar/seat")), /*#__PURE__*/_react.default.createElement(_components.Booking.Group, null, /*#__PURE__*/_react.default.createElement(_components.Booking.BookButton, {
+  }))))), /*#__PURE__*/_react.default.createElement(_components.Booking.Pan, null, /*#__PURE__*/_react.default.createElement(_components.Booking.Title, null, "Book a seat to:\xA0 ", /*#__PURE__*/_react.default.createElement(_components.Booking.Span, null, trip.destination)), /*#__PURE__*/_react.default.createElement(_components.Booking.SubTitle, null, "Trip information"), /*#__PURE__*/_react.default.createElement(_components.Booking.Group, null, /*#__PURE__*/_react.default.createElement(_components.Booking.Detail, null, "Departure time: \xA0", /*#__PURE__*/_react.default.createElement(_components.Booking.Info, null, new Date(trip.departureTime).getHours(), ":", new Date(trip.departureTime).getMinutes(), ", ", new Date(trip.departureTime).toLocaleDateString())), /*#__PURE__*/_react.default.createElement(_components.Booking.Detail, null, "Driver: \xA0", /*#__PURE__*/_react.default.createElement(_components.Booking.Info, null, trip.driverName)), /*#__PURE__*/_react.default.createElement(_components.Booking.Detail, null, "Driver's contact: \xA0", /*#__PURE__*/_react.default.createElement(_components.Booking.Info, null, trip.driverContact)), /*#__PURE__*/_react.default.createElement(_components.Booking.Detail, null, "Estimated duration: \xA0", /*#__PURE__*/_react.default.createElement(_components.Booking.Info, null, trip.estimatedDuration)), /*#__PURE__*/_react.default.createElement(_components.Booking.Detail, null, "Breaks: \xA0", /*#__PURE__*/_react.default.createElement(_components.Booking.Info, null, trip.breaks)), /*#__PURE__*/_react.default.createElement(_components.Booking.Detail, null, trip.price, "Ar/seat")), /*#__PURE__*/_react.default.createElement(_components.Booking.Group, null, /*#__PURE__*/_react.default.createElement(_components.Booking.BookButton, {
     onClick: () => setShowModal(true)
-  }, "Book ", bookedSeats, " seats"), /*#__PURE__*/_react.default.createElement(_components.Booking.Detail, null, "Total: ", "Ar"))), showModal && /*#__PURE__*/_react.default.createElement(_components.Booking.Modal, null, /*#__PURE__*/_react.default.createElement(_components.Booking.InnerModal, null, /*#__PURE__*/_react.default.createElement(_components.Booking.CloseButton, {
+  }, "Book ", bookedSeats, " seats"), /*#__PURE__*/_react.default.createElement(_components.Booking.Detail, null, "Total: ", totalPrice, "\xA0Ar"))), showModal && /*#__PURE__*/_react.default.createElement(_components.Booking.Modal, null, /*#__PURE__*/_react.default.createElement(_components.Booking.InnerModal, null, /*#__PURE__*/_react.default.createElement(_components.Booking.CloseButton, {
     onClick: () => setShowModal(false)
-  }, "X"), /*#__PURE__*/_react.default.createElement(_components.Booking.ModalTitle, null, "Booking confirmed!"), /*#__PURE__*/_react.default.createElement(_components.Booking.ModalText, null, "Thank you for trusting our service. Your booking has beed added to your account. You can review it there."), /*#__PURE__*/_react.default.createElement(_components.Booking.ButtonCheck, {
+  }, "X"), /*#__PURE__*/_react.default.createElement(_components.Booking.ModalTitle, null, "Booking confirmed!"), /*#__PURE__*/_react.default.createElement(_components.Booking.ModalText, null, "Thank you for trusting our service. Your booking has been added to your account. You can review it there."), /*#__PURE__*/_react.default.createElement(_components.Booking.ButtonCheck, {
     onClick: () => dispatch((0, _actions.bookSeat)(trip))
   }, /*#__PURE__*/_react.default.createElement(_components.Booking.Link, {
     to: `/account`
@@ -39046,20 +39322,24 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function MyAccountCountainer() {
   const bookedTrips = (0, _reactRedux.useSelector)(state => state.booked);
-  const [firstName, setFirstName] = (0, _react.useState)();
-  const [lastName, setLastName] = (0, _react.useState)();
-  const [phoneNbr, setPhoneNbr] = (0, _react.useState)();
+  const users = (0, _reactRedux.useSelector)(state => state.user);
+  const seats = (0, _reactRedux.useSelector)(state => state.seats);
+  const [firstName, setFirstName] = (0, _react.useState)(users.firstName);
+  const [lastName, setLastName] = (0, _react.useState)(users.lastName);
+  const [phoneNbr, setPhoneNbr] = (0, _react.useState)(users.phoneNumber);
   console.log(bookedTrips);
-  return /*#__PURE__*/_react.default.createElement(_components.MyAccount, null, /*#__PURE__*/_react.default.createElement(_components.MyAccount.Pan, null, /*#__PURE__*/_react.default.createElement(_components.MyAccount.Title, null), /*#__PURE__*/_react.default.createElement(_components.MyAccount.SubTitle, null), /*#__PURE__*/_react.default.createElement(_components.MyAccount.Form, null, /*#__PURE__*/_react.default.createElement(_myAccount.InputLabel, null, "First name", /*#__PURE__*/_react.default.createElement(_components.MyAccount.Input, {
+  return /*#__PURE__*/_react.default.createElement(_components.MyAccount, null, /*#__PURE__*/_react.default.createElement(_components.MyAccount.Pan, null, /*#__PURE__*/_react.default.createElement(_components.MyAccount.Title, null, /*#__PURE__*/_react.default.createElement("img", {
+    src: "../icons/flat-ui_user-interface.svg"
+  })), /*#__PURE__*/_react.default.createElement(_components.MyAccount.SubTitle, null, "My personal informations"), /*#__PURE__*/_react.default.createElement(_components.MyAccount.Form, null, /*#__PURE__*/_react.default.createElement(_myAccount.InputLabel, null, "First name", /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_components.MyAccount.Input, {
     value: firstName
-  })), /*#__PURE__*/_react.default.createElement(_myAccount.InputLabel, null, /*#__PURE__*/_react.default.createElement(_components.MyAccount.Input, {
+  })), /*#__PURE__*/_react.default.createElement(_myAccount.InputLabel, null, "Last name", /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_components.MyAccount.Input, {
     value: lastName
-  })), /*#__PURE__*/_react.default.createElement(_myAccount.InputLabel, null, /*#__PURE__*/_react.default.createElement(_components.MyAccount.Input, {
+  })), /*#__PURE__*/_react.default.createElement(_myAccount.InputLabel, null, "Phone number", /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_components.MyAccount.Input, {
     type: "tel",
     value: phoneNbr
-  })))), /*#__PURE__*/_react.default.createElement(_components.MyAccount.Pan, null, /*#__PURE__*/_react.default.createElement(_components.MyAccount.Title, null), /*#__PURE__*/_react.default.createElement(_components.MyAccount.SubTitle, null), /*#__PURE__*/_react.default.createElement(_components.MyAccount.List, null, bookedTrips.length !== 0 ? bookedTrips.map(trip => /*#__PURE__*/_react.default.createElement(_components.MyAccount.Trip, {
+  })), /*#__PURE__*/_react.default.createElement(_components.MyAccount.UpdateButton, null, "Update"))), /*#__PURE__*/_react.default.createElement(_components.MyAccount.Pan, null, /*#__PURE__*/_react.default.createElement(_components.MyAccount.Title, null, "My account: ", /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_components.MyAccount.Span, null, firstName, " \xA0 ", lastName)), /*#__PURE__*/_react.default.createElement(_components.MyAccount.SubTitle, null, "My booking:"), /*#__PURE__*/_react.default.createElement(_components.MyAccount.List, null, bookedTrips.length !== 0 ? bookedTrips.map(trip => /*#__PURE__*/_react.default.createElement(_components.MyAccount.Trip, {
     key: trip.id
-  }, /*#__PURE__*/_react.default.createElement(_components.MyAccount.Group, null, /*#__PURE__*/_react.default.createElement(_components.MyAccount.Detail, null, trip.destination), /*#__PURE__*/_react.default.createElement(_components.MyAccount.Detail, null, trip.departureTime)), /*#__PURE__*/_react.default.createElement(_components.MyAccount.Group, null, /*#__PURE__*/_react.default.createElement(_components.MyAccount.Detail, null, "seat"), /*#__PURE__*/_react.default.createElement(_components.MyAccount.Detail, null, "Ar")))) : "No trip booked")));
+  }, /*#__PURE__*/_react.default.createElement(_components.MyAccount.Group, null, /*#__PURE__*/_react.default.createElement(_components.MyAccount.Detail, null, trip.destination), /*#__PURE__*/_react.default.createElement(_components.MyAccount.Detail, null, new Date(trip.departureTime).toLocaleDateString(), ", ", new Date(trip.departureTime).getHours(), ":", new Date(trip.departureTime).getMinutes())), /*#__PURE__*/_react.default.createElement(_components.MyAccount.Group, null, /*#__PURE__*/_react.default.createElement(_components.MyAccount.Detail, null, seats.bookedSeats, "seat"), /*#__PURE__*/_react.default.createElement(_components.MyAccount.Detail, null, seats.totalPrice, "Ar")), /*#__PURE__*/_react.default.createElement(_components.MyAccount.CancelButton, null, "cancel"))) : "No trip booked")));
 }
 },{"react":"node_modules/react/index.js","react-redux":"node_modules/react-redux/es/index.js","../components":"src/components/index.js","../components/myAccount/style/myAccount":"src/components/myAccount/style/myAccount.js"}],"src/pages/MyAccount.js":[function(require,module,exports) {
 "use strict";
@@ -39104,9 +39384,38 @@ function TripDetailContainer() {
   } = (0, _reactRouter.useParams)();
   const trips = (0, _reactRedux.useSelector)(state => state.trips);
   const tripToDisplay = trips.filter(trip => trip.destination === town);
-  return /*#__PURE__*/_react.default.createElement(_components.TripDetail, null, /*#__PURE__*/_react.default.createElement(_components.TripDetail.Title, null, "Next to trips to:", /*#__PURE__*/_react.default.createElement(_components.TripDetail.Span, null)), /*#__PURE__*/_react.default.createElement(_components.TripDetail.List, null, tripToDisplay.map(trip => /*#__PURE__*/_react.default.createElement(_components.TripDetail.Trip, {
+
+  function getDay(day) {
+    switch (day) {
+      case 1:
+        return "Monday";
+
+      case 2:
+        return "Tuesday";
+
+      case 3:
+        return "Wednesday";
+
+      case 4:
+        return "Thursday";
+
+      case 5:
+        return "Friday";
+
+      case 6:
+        return "Saturday";
+
+      case 7:
+        return "Sunday";
+
+      default:
+        break;
+    }
+  }
+
+  return /*#__PURE__*/_react.default.createElement(_components.TripDetail, null, /*#__PURE__*/_react.default.createElement(_components.TripDetail.Title, null, "Next to trips to:", /*#__PURE__*/_react.default.createElement(_components.TripDetail.Span, null, town)), /*#__PURE__*/_react.default.createElement(_components.TripDetail.List, null, tripToDisplay.map(trip => /*#__PURE__*/_react.default.createElement(_components.TripDetail.Trip, {
     key: trip.id
-  }, /*#__PURE__*/_react.default.createElement(_components.TripDetail.Group, null, /*#__PURE__*/_react.default.createElement(_components.TripDetail.Day, null, trip.departureTime), /*#__PURE__*/_react.default.createElement(_components.TripDetail.Time, null)), /*#__PURE__*/_react.default.createElement(_components.TripDetail.Group, null, /*#__PURE__*/_react.default.createElement(_components.TripDetail.Date, null), /*#__PURE__*/_react.default.createElement(_components.TripDetail.Seats, null, trip.seats.filter(seat => seat.isAvailable === true).length, " seats left")), /*#__PURE__*/_react.default.createElement(_components.TripDetail.Button, null, /*#__PURE__*/_react.default.createElement(_components.TripDetail.Link, {
+  }, /*#__PURE__*/_react.default.createElement(_components.TripDetail.Group, null, /*#__PURE__*/_react.default.createElement(_components.TripDetail.Day, null, getDay(new Date(trip.departureTime).getDay())), /*#__PURE__*/_react.default.createElement(_components.TripDetail.Time, null, new Date(trip.departureTime).getHours(), ":", new Date(trip.departureTime).getMinutes())), /*#__PURE__*/_react.default.createElement(_components.TripDetail.Group, null, /*#__PURE__*/_react.default.createElement(_components.TripDetail.Date, null, new Date(trip.departureTime).toLocaleDateString()), /*#__PURE__*/_react.default.createElement(_components.TripDetail.Seats, null, /*#__PURE__*/_react.default.createElement(_components.TripDetail.Span, null, trip.seats.filter(seat => seat.isAvailable === true).length), " seats left")), /*#__PURE__*/_react.default.createElement(_components.TripDetail.Button, null, /*#__PURE__*/_react.default.createElement(_components.TripDetail.Link, {
     to: `/book/${trip.id}`
   }, "Book a Seat"))))));
 }
@@ -39177,6 +39486,7 @@ const GlobalStyles = (0, _styledComponents.createGlobalStyle)`
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         font-size: 16px;
         margin: 0;
+        position: relative;
     }
 `;
 exports.GlobalStyles = GlobalStyles;
@@ -39216,6 +39526,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _default = {
+  seats: {
+    bookedSeats: 0,
+    totalPrice: 0
+  },
   trips: [],
   booked: [],
   towns: ["Antananarivo", "Vatomandry", "Toamasina", "Moramanga"],
@@ -39223,10 +39537,9 @@ var _default = {
     id: 0,
     firstName: "Sarah",
     lastName: "Raz",
-    phoneNumber: "0345854344"
-  },
-  bookedSeats: 0,
-  totalPrice: 0
+    phoneNumber: "0345854344",
+    bookedTrips: []
+  }
 };
 exports.default = _default;
 },{}],"src/reducers/index.js":[function(require,module,exports) {
@@ -39281,10 +39594,39 @@ function towns(state = [], action) {
   return state;
 }
 
-function pickSeat(state = 0, action) {
+function seats(state = {}, action) {
   switch (action.type) {
     case "PICK_SEAT":
-      return state + 1;
+      return { ...state,
+        bookedSeats: state.bookedSeats + 1
+      };
+
+    case "GET_PRICE":
+      return { ...state,
+        totalPrice: state.totalPrice + action.payload
+      };
+
+    default:
+      return state;
+  }
+}
+
+function updateUser(state = {}, action) {
+  switch (action.type) {
+    case "SET_FIRST_NAME":
+      return { ...state,
+        firstName: state.payload
+      };
+
+    case "SET_LAST_NAME":
+      return { ...state,
+        lastName: state.payload
+      };
+
+    case "SET_PHONE_NUMBER":
+      return { ...state,
+        phoneNumber: state.payload
+      };
 
     default:
       return state;
@@ -39295,7 +39637,8 @@ const reducer = (0, _redux.combineReducers)({
   trips,
   booked,
   towns,
-  pickSeat
+  seats,
+  user: updateUser
 });
 var _default = reducer;
 exports.default = _default;
@@ -39370,7 +39713,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54648" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50503" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

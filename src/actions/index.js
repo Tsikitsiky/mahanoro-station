@@ -28,3 +28,10 @@ export function pickSeat() {
 		type: "PICK_SEAT",
 	}
 }
+
+export function getPrice(price) {
+	return {
+		type: "GET_PRICE",
+		payload: price
+	}
+}

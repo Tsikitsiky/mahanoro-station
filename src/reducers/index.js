@@ -39,12 +39,43 @@ function towns(state=[], action) {
     return state;
 }
 
-function pickSeat(state = 0, action) {
+function seats(state = {}, action) {
     switch (action.type) {
         case "PICK_SEAT":
-            return state + 1
+            return {
+                ...state,
+                bookedSeats: state.bookedSeats + 1
+            }
+        case "GET_PRICE":
+            return {
+                ...state,
+                totalPrice: state.totalPrice + action.payload
+            }
         default:
             return state
+    }
+}
+
+function updateUser(state={}, action) {
+    switch (action.type) {
+        case "SET_FIRST_NAME":
+            return {
+                ...state,
+                firstName: state.payload
+            }
+        case "SET_LAST_NAME":
+            return {
+                ...state,
+                lastName: state.payload
+            }
+        case "SET_PHONE_NUMBER":
+            return {
+                ...state,
+                phoneNumber: state.payload
+            }
+    
+        default:
+            return state;
     }
 }
 
@@ -52,7 +83,8 @@ const reducer = combineReducers({
     trips,
     booked,
     towns,
-    pickSeat
+    seats,
+    user: updateUser,
 })
 
 export default reducer

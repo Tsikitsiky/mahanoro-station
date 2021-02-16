@@ -1,5 +1,5 @@
 import React from 'react'
-import { BookButton, ButtonCheck, CloseButton, Container, Detail, Group, Info, InnerModal, Link, Modal, ModalText, ModalTitle, Pan, SeatButton, Span, SubTitle, Title } from './style/booking'
+import { BookButton, ButtonCheck, CloseButton, Container, Detail, Group, Info, InnerModal, Link, Modal, ModalText, ModalTitle, Pan, SeatButton, Span, SubTitle, Title, Wrapper } from './style/booking'
 
 export default function Booking({children, ...restProps}) {
     return (
@@ -30,6 +30,9 @@ Booking.Detail= function BookinDetail({children, ...restProps}) {
 }
 Booking.Group= function BookinGroup({children, ...restProps}) {
     return <Group {...restProps}>{children}</Group>
+}
+Booking.Wrapper= function BookinWrapper({children, ...restProps}) {
+    return <Wrapper {...restProps}>{children}</Wrapper>
 }
 Booking.Span= function BookinSpan({children, ...restProps}) {
     return <Span {...restProps}>{children}</Span>

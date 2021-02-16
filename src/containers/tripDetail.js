@@ -7,21 +7,42 @@ export default function TripDetailContainer() {
     const {town} = useParams();
     const trips = useSelector(state => state.trips);
     const tripToDisplay = trips.filter(trip => trip.destination === town);
+    function getDay(day) {
+        switch (day) {
+            case 1:
+                return "Monday"
+            case 2:
+                return "Tuesday"
+            case 3:
+                return "Wednesday"
+            case 4:
+                return "Thursday"
+            case 5:
+                return "Friday"
+            case 6:
+                return "Saturday"
+            case 7:
+                return "Sunday"
+        
+            default:
+                break;
+        }
+    }
     return (
         <TripDetail>
             <TripDetail.Title>Next to trips to: 
-                <TripDetail.Span></TripDetail.Span>
+                <TripDetail.Span>{town}</TripDetail.Span>
             </TripDetail.Title>
             <TripDetail.List>
                 {tripToDisplay.map(trip => <TripDetail.Trip key={trip.id}>
                     <TripDetail.Group>
-                        <TripDetail.Day>{trip.departureTime}</TripDetail.Day>
-                        <TripDetail.Time></TripDetail.Time>
+                        <TripDetail.Day>{getDay(new Date(trip.departureTime).getDay())}</TripDetail.Day>
+                        <TripDetail.Time>{new Date(trip.departureTime).getHours()}:{new Date(trip.departureTime).getMinutes()}</TripDetail.Time>
                     </TripDetail.Group>
                     <TripDetail.Group>
-                        <TripDetail.Date></TripDetail.Date>
+                        <TripDetail.Date>{new Date(trip.departureTime).toLocaleDateString()}</TripDetail.Date>
                         <TripDetail.Seats>
-                            {trip.seats.filter(seat => seat.isAvailable === true).length} seats left
+                            <TripDetail.Span>{trip.seats.filter(seat => seat.isAvailable === true).length}</TripDetail.Span> seats left
                         </TripDetail.Seats>
                     </TripDetail.Group>
                     <TripDetail.Button>
