@@ -2,7 +2,7 @@
 
 This app is built out with **redux**, **compound components** and **styled components**.
 
-It allow us to reserve some seats in _"Taxi brousses"_ departing from Mahanoro station.
+It allows us to reserve some seats in _"Taxi brousses"_ departing from Mahanoro station.
 
 See: 
 - [Demo]('https://github.com/Tsikitsiky/mahanoro-station')
@@ -19,6 +19,7 @@ User is able to:
 - Confirm the booking
 - See their confirmed bookings on the 'My account'page
 - Modify their own information, like name or phone number, on that same page.
+- Cancel a booked trip
 
 ## Design
 
