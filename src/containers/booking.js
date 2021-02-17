@@ -2,16 +2,30 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom';
 import { Booking } from '../components';
-import {bookSeat, pickSeat, getPrice} from '../actions'
+import {bookSeat, pickSeat, getPrice, resetSeats, unBook} from '../actions'
 
 export default function BookingContainer() {
     const trips = useSelector(state => state.trips);
-    const bookedSeats = useSelector(state => state.seats.bookedSeats);
-    const totalPrice = useSelector(state => state.seats.totalPrice)
+    const seats = useSelector(state => state.seats);
+    const booked = useSelector(state => state.booked);
+    const bookedSeats = seats.bookedSeats;
+    const totalPrice = seats.totalPrice;
     const {id} = useParams();
     const trip = trips.find(trip => trip.id == id);
     const [showModal, setShowModal] = useState(false);
     const dispatch = useDispatch();
+    const [book, setBook] = useState(false)
+
+    function booking(seat, seatid) {
+        // const isAlreadyBooked = trip.seats.some(item => item.id == id)
+        if(seat.isAvailable) {
+            dispatch(pickSeat(seatid))
+            dispatch(getPrice(trip.price))
+            
+        } else {
+            dispatch(unBook(totalPrice));
+        }
+    }
     return (
         <Booking>
             <Booking.Pan>
@@ -21,10 +35,7 @@ export default function BookingContainer() {
                 <Booking.SubTitle>Pick a seat</Booking.SubTitle>
                 <Booking.Group>
                     <Booking.Wrapper>
-                    {trip.seats.map(seat => <Booking.SeatButton onClick={() => {
-                        dispatch(pickSeat())
-                        dispatch(getPrice(trip.price))
-                        }} key={seat.id}></Booking.SeatButton>)}
+                    {trip.seats.map(seat => <Booking.SeatButton disabled ={!seat.isAvailable} className={book && "available"} onClick={() => booking(seat,seat.id)} key={seat.id}></Booking.SeatButton>)}
                     </Booking.Wrapper>
                 </Booking.Group>
             </Booking.Pan>
@@ -64,7 +75,10 @@ export default function BookingContainer() {
                         <Booking.ModalText>
                             Thank you for trusting our service. Your booking has been added to your account. You can review it there.
                         </Booking.ModalText>
-                        <Booking.ButtonCheck onClick={() => dispatch(bookSeat(trip))}>
+                        <Booking.ButtonCheck onClick={() => {
+                            dispatch(bookSeat(trip, seats))
+                            dispatch(resetSeats())
+                        }}>
                             <Booking.Link to={`/account`}>Check your account</Booking.Link>
                         </Booking.ButtonCheck>
                     </Booking.InnerModal>

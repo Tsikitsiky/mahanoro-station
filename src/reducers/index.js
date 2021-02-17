@@ -4,24 +4,20 @@ function trips(state=[], action) {
     switch (action.type) {
         case "GET_TRIPS":
             return action.payload
-        // case "BOOK_SEAT":{
-        //     const newArray = state.map(trip => {
-        //         if(trip.id === action.payload.id) {
-        //             return {...trip, 
-        //                     seats: trip.seats.map(seat => {
-        //                         if(seat.id === action.seatId) {
-        //                             return{
-        //                                 ...seat,
-        //                                 isAvailable: !isAvailable
-        //                             }
-        //                         }
-        //                     })
-        //                 }
-        //         }
-        //         return song
-        //     }) 
-        //     return newArray
-        // }
+        case "PICK_SEAT":{
+            const newArray = state.map(trip => { 
+                trip.seats.map(seat => {
+                    if(seat.id == action.payload) {
+                        return {
+                            ...seat,
+                            isAvailable: !seat.isAvailable
+                        }
+                    }
+                })
+                return trip
+            }) 
+            return newArray
+        }
         default:
             return state
     }
@@ -30,7 +26,13 @@ function trips(state=[], action) {
 function booked(state=[], action) {
     switch (action.type) {
         case "BOOK_SEAT":
-            return [...state, action.payload]
+            const newObject = Object.assign(action.payload, action.payload[booked] = action.seat)
+            return [...state, newObject]
+        case "CANCEL_TRIP":
+            const newArray = state.filter(
+            (item) => item.id !== action.payload
+        );
+        return [...newArray];
         default:
             return state;
     }
@@ -51,6 +53,17 @@ function seats(state = {}, action) {
                 ...state,
                 totalPrice: state.totalPrice + action.payload
             }
+            case "RESET_SEATS": 
+                return {
+                    bookedSeats: 0,
+                    totalPrice: 0,
+                }
+            case "UNBOOK":
+                return {
+                    ...state,
+                    bookedSeats: state.bookedSeats -1,
+                    totalPrice: state.totalPrice - action.payload
+                }
         default:
             return state
     }
@@ -61,17 +74,17 @@ function updateUser(state={}, action) {
         case "SET_FIRST_NAME":
             return {
                 ...state,
-                firstName: state.payload
+                firstName: action.payload
             }
         case "SET_LAST_NAME":
             return {
                 ...state,
-                lastName: state.payload
+                lastName: action.payload
             }
         case "SET_PHONE_NUMBER":
             return {
                 ...state,
-                phoneNumber: state.payload
+                phoneNumber: action.payload
             }
     
         default:

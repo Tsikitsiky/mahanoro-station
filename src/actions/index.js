@@ -16,16 +16,18 @@ export function getTripDetail() {
     }
 }
 
-export function bookSeat(trip) {
+export function bookSeat(trip, seat) {
 	return {
 		type: "BOOK_SEAT",
-		payload: trip
+		payload: trip,
+		seat,
 	}
 }
 
-export function pickSeat() {
+export function pickSeat(id) {
 	return {
 		type: "PICK_SEAT",
+		payload: id
 	}
 }
 
@@ -33,5 +35,46 @@ export function getPrice(price) {
 	return {
 		type: "GET_PRICE",
 		payload: price
+	}
+}
+
+export function changeFirstName(name) {
+	return {
+		type: "SET_FIRST_NAME",
+		payload: name
+	}
+}
+
+export function changeLastName(name) {
+	return {
+		type: "SET_LAST_NAME",
+		payload: name
+	}
+}
+
+export function changePhoneNbr(number) {
+	return {
+		type: "SET_PHONE_NUMBER",
+		payload: number
+	}
+}
+
+export function cancel(id) {
+	return {
+		type: "CANCEL_TRIP",
+		payload: id
+	}
+}
+
+export function resetSeats() {
+	return {
+		type: "RESET_SEATS",
+	}
+}
+
+export function unBook(total) {
+	return {
+		type: "UNBOOK",
+		payload: total
 	}
 }

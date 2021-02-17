@@ -10,6 +10,11 @@ export const Title = styled.h2`
     font-size: 65px;
     font-weight: 400;
     line-height: 75px;
+    padding-left: 15rem;
+    background-image: url('../icons/twemoji_alarm-clock.svg');
+    background-repeat: no-repeat;
+    background-size: 100px;
+    background-position: 5rem 50%;
 `;
 export const List = styled.ul`
     padding: 0;
@@ -29,6 +34,11 @@ export const Trip = styled.li`
     align-items: center;
     margin-bottom: 50px;
     max-height: 93px;
+    padding-left: 7rem;
+    background-image: url('../icons/noto-v1_bus.svg');
+    background-repeat: no-repeat;
+    background-size: 80px;
+    background-position: left 50%;
 `;
 export const Group = styled.div`
     display: flex;

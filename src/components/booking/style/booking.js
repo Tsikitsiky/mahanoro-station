@@ -41,6 +41,14 @@ export const SeatButton = styled.button`
     outline: none;
     width: 59px;
     height: 59px; 
+    :disabled {
+        cursor: not-allowed;
+        background-color: #E53170;
+    }
+
+    &.available {
+        background-color: #FFAC33;
+    }
 `;
 export const BookButton = styled.button`
     background-color: #E53170;
@@ -74,7 +82,7 @@ export const Link = styled(ReachRouterLink)`
 export const Modal = styled.div`
     position: absolute;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     top: 0;
     left: 0;
     background-color: rgba(255, 255, 255, 0.8);

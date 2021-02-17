@@ -38183,6 +38183,11 @@ const Container = _styledComponents.default.div`
 exports.Container = Container;
 const Title = _styledComponents.default.h1`
     font-size: 36px;
+    background-image: url('../icons/bus-small.svg');
+    background-repeat: no-repeat;
+    background-size: 32px;
+    background-position: left;
+    padding-left: 4rem;
 `;
 exports.Title = Title;
 const Link = (0, _styledComponents.default)(_reactRouterDom.Link)`
@@ -38215,10 +38220,13 @@ function Header({
 }
 
 Header.Title = function HeaderTitle({
+  to,
   children,
   ...restProps
 }) {
-  return /*#__PURE__*/_react.default.createElement(_header.Title, restProps, children);
+  return /*#__PURE__*/_react.default.createElement(_header.Link, _extends({
+    to: to
+  }, restProps), /*#__PURE__*/_react.default.createElement(_header.Title, restProps, children));
 };
 
 Header.Account = function HeaderAccount({
@@ -38253,6 +38261,11 @@ const Title = _styledComponents.default.h2`
     font-size: 65px;
     font-weight: 700;
     line-height: 75px;
+    padding-left: 8rem;
+    background-image: url('../icons/noto-v1_bus.svg');
+    background-repeat: no-repeat;
+    background-size: 90px;
+    background-position: left 50%;
 `;
 exports.Title = Title;
 const List = _styledComponents.default.ul`
@@ -38268,6 +38281,11 @@ const List = _styledComponents.default.ul`
 exports.List = List;
 const Town = _styledComponents.default.li`
     background-color: #0F0E17;
+    padding-left: 5rem;
+    background-image: url('../icons/building.svg');
+    background-repeat: no-repeat;
+    background-size: 34px;
+    background-position: 1rem 50%;
 `;
 exports.Town = Town;
 const Link = (0, _styledComponents.default)(_reactRouterDom.Link)`
@@ -38365,6 +38383,11 @@ const Title = _styledComponents.default.h2`
     font-size: 65px;
     font-weight: 400;
     line-height: 75px;
+    padding-left: 15rem;
+    background-image: url('../icons/twemoji_alarm-clock.svg');
+    background-repeat: no-repeat;
+    background-size: 100px;
+    background-position: 5rem 50%;
 `;
 exports.Title = Title;
 const List = _styledComponents.default.ul`
@@ -38387,6 +38410,11 @@ const Trip = _styledComponents.default.li`
     align-items: center;
     margin-bottom: 50px;
     max-height: 93px;
+    padding-left: 7rem;
+    background-image: url('../icons/noto-v1_bus.svg');
+    background-repeat: no-repeat;
+    background-size: 80px;
+    background-position: left 50%;
 `;
 exports.Trip = Trip;
 const Group = _styledComponents.default.div`
@@ -38591,6 +38619,14 @@ const SeatButton = _styledComponents.default.button`
     outline: none;
     width: 59px;
     height: 59px; 
+    :disabled {
+        cursor: not-allowed;
+        background-color: #E53170;
+    }
+
+    &.available {
+        background-color: #FFAC33;
+    }
 `;
 exports.SeatButton = SeatButton;
 const BookButton = _styledComponents.default.button`
@@ -38629,7 +38665,7 @@ exports.Link = Link;
 const Modal = _styledComponents.default.div`
     position: absolute;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     top: 0;
     left: 0;
     background-color: rgba(255, 255, 255, 0.8);
@@ -38902,10 +38938,11 @@ const Trip = _styledComponents.default.li`
     background-repeat: no-repeat;
     background-size: 65px;
     background-position: left;
-    padding-left: 5rem;
+    padding-left: 7rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 1rem;
 `;
 exports.Trip = Trip;
 const Group = _styledComponents.default.div`
@@ -38929,6 +38966,7 @@ const CancelButton = _styledComponents.default.button`
     outline: none;
     border: none;
     background-color: #FF8906;
+    padding: 1rem 1.5rem;
 `;
 exports.CancelButton = CancelButton;
 const UpdateButton = _styledComponents.default.button`
@@ -39113,6 +39151,12 @@ exports.getTripDetail = getTripDetail;
 exports.bookSeat = bookSeat;
 exports.pickSeat = pickSeat;
 exports.getPrice = getPrice;
+exports.changeFirstName = changeFirstName;
+exports.changeLastName = changeLastName;
+exports.changePhoneNbr = changePhoneNbr;
+exports.cancel = cancel;
+exports.resetSeats = resetSeats;
+exports.unBook = unBook;
 
 function getTrips() {
   return async dispatch => {
@@ -39132,16 +39176,18 @@ function getTripDetail() {
   };
 }
 
-function bookSeat(trip) {
+function bookSeat(trip, seat) {
   return {
     type: "BOOK_SEAT",
-    payload: trip
+    payload: trip,
+    seat
   };
 }
 
-function pickSeat() {
+function pickSeat(id) {
   return {
-    type: "PICK_SEAT"
+    type: "PICK_SEAT",
+    payload: id
   };
 }
 
@@ -39149,6 +39195,47 @@ function getPrice(price) {
   return {
     type: "GET_PRICE",
     payload: price
+  };
+}
+
+function changeFirstName(name) {
+  return {
+    type: "SET_FIRST_NAME",
+    payload: name
+  };
+}
+
+function changeLastName(name) {
+  return {
+    type: "SET_LAST_NAME",
+    payload: name
+  };
+}
+
+function changePhoneNbr(number) {
+  return {
+    type: "SET_PHONE_NUMBER",
+    payload: number
+  };
+}
+
+function cancel(id) {
+  return {
+    type: "CANCEL_TRIP",
+    payload: id
+  };
+}
+
+function resetSeats() {
+  return {
+    type: "RESET_SEATS"
+  };
+}
+
+function unBook(total) {
+  return {
+    type: "UNBOOK",
+    payload: total
   };
 }
 },{}],"src/containers/booking.js":[function(require,module,exports) {
@@ -39175,28 +39262,44 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function BookingContainer() {
   const trips = (0, _reactRedux.useSelector)(state => state.trips);
-  const bookedSeats = (0, _reactRedux.useSelector)(state => state.seats.bookedSeats);
-  const totalPrice = (0, _reactRedux.useSelector)(state => state.seats.totalPrice);
+  const seats = (0, _reactRedux.useSelector)(state => state.seats);
+  const booked = (0, _reactRedux.useSelector)(state => state.booked);
+  const bookedSeats = seats.bookedSeats;
+  const totalPrice = seats.totalPrice;
   const {
     id
   } = (0, _reactRouterDom.useParams)();
   const trip = trips.find(trip => trip.id == id);
   const [showModal, setShowModal] = (0, _react.useState)(false);
   const dispatch = (0, _reactRedux.useDispatch)();
+  const [book, setBook] = (0, _react.useState)(false);
+
+  function booking(seat, seatid) {
+    // const isAlreadyBooked = trip.seats.some(item => item.id == id)
+    if (seat.isAvailable) {
+      dispatch((0, _actions.pickSeat)(seatid));
+      dispatch((0, _actions.getPrice)(trip.price));
+    } else {
+      dispatch((0, _actions.unBook)(totalPrice));
+    }
+  }
+
   return /*#__PURE__*/_react.default.createElement(_components.Booking, null, /*#__PURE__*/_react.default.createElement(_components.Booking.Pan, null, /*#__PURE__*/_react.default.createElement(_components.Booking.Title, null, /*#__PURE__*/_react.default.createElement("img", {
     src: "../icons/noto-v1_bus.svg"
   })), /*#__PURE__*/_react.default.createElement(_components.Booking.SubTitle, null, "Pick a seat"), /*#__PURE__*/_react.default.createElement(_components.Booking.Group, null, /*#__PURE__*/_react.default.createElement(_components.Booking.Wrapper, null, trip.seats.map(seat => /*#__PURE__*/_react.default.createElement(_components.Booking.SeatButton, {
-    onClick: () => {
-      dispatch((0, _actions.pickSeat)());
-      dispatch((0, _actions.getPrice)(trip.price));
-    },
+    disabled: !seat.isAvailable,
+    className: book && "available",
+    onClick: () => booking(seat, seat.id),
     key: seat.id
   }))))), /*#__PURE__*/_react.default.createElement(_components.Booking.Pan, null, /*#__PURE__*/_react.default.createElement(_components.Booking.Title, null, "Book a seat to:\xA0 ", /*#__PURE__*/_react.default.createElement(_components.Booking.Span, null, trip.destination)), /*#__PURE__*/_react.default.createElement(_components.Booking.SubTitle, null, "Trip information"), /*#__PURE__*/_react.default.createElement(_components.Booking.Group, null, /*#__PURE__*/_react.default.createElement(_components.Booking.Detail, null, "Departure time: \xA0", /*#__PURE__*/_react.default.createElement(_components.Booking.Info, null, new Date(trip.departureTime).getHours(), ":", new Date(trip.departureTime).getMinutes(), ", ", new Date(trip.departureTime).toLocaleDateString())), /*#__PURE__*/_react.default.createElement(_components.Booking.Detail, null, "Driver: \xA0", /*#__PURE__*/_react.default.createElement(_components.Booking.Info, null, trip.driverName)), /*#__PURE__*/_react.default.createElement(_components.Booking.Detail, null, "Driver's contact: \xA0", /*#__PURE__*/_react.default.createElement(_components.Booking.Info, null, trip.driverContact)), /*#__PURE__*/_react.default.createElement(_components.Booking.Detail, null, "Estimated duration: \xA0", /*#__PURE__*/_react.default.createElement(_components.Booking.Info, null, trip.estimatedDuration)), /*#__PURE__*/_react.default.createElement(_components.Booking.Detail, null, "Breaks: \xA0", /*#__PURE__*/_react.default.createElement(_components.Booking.Info, null, trip.breaks)), /*#__PURE__*/_react.default.createElement(_components.Booking.Detail, null, trip.price, "Ar/seat")), /*#__PURE__*/_react.default.createElement(_components.Booking.Group, null, /*#__PURE__*/_react.default.createElement(_components.Booking.BookButton, {
     onClick: () => setShowModal(true)
   }, "Book ", bookedSeats, " seats"), /*#__PURE__*/_react.default.createElement(_components.Booking.Detail, null, "Total: ", totalPrice, "\xA0Ar"))), showModal && /*#__PURE__*/_react.default.createElement(_components.Booking.Modal, null, /*#__PURE__*/_react.default.createElement(_components.Booking.InnerModal, null, /*#__PURE__*/_react.default.createElement(_components.Booking.CloseButton, {
     onClick: () => setShowModal(false)
   }, "X"), /*#__PURE__*/_react.default.createElement(_components.Booking.ModalTitle, null, "Booking confirmed!"), /*#__PURE__*/_react.default.createElement(_components.Booking.ModalText, null, "Thank you for trusting our service. Your booking has been added to your account. You can review it there."), /*#__PURE__*/_react.default.createElement(_components.Booking.ButtonCheck, {
-    onClick: () => dispatch((0, _actions.bookSeat)(trip))
+    onClick: () => {
+      dispatch((0, _actions.bookSeat)(trip, seats));
+      dispatch((0, _actions.resetSeats)());
+    }
   }, /*#__PURE__*/_react.default.createElement(_components.Booking.Link, {
     to: `/account`
   }, "Check your account")))));
@@ -39216,8 +39319,10 @@ var _components = require("../components");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function HeaderContainer() {
-  return /*#__PURE__*/_react.default.createElement(_components.Header, null, /*#__PURE__*/_react.default.createElement(_components.Header.Title, null, "Mahanoro Station"), /*#__PURE__*/_react.default.createElement(_components.Header.Account, {
-    to: "/myAccount"
+  return /*#__PURE__*/_react.default.createElement(_components.Header, null, /*#__PURE__*/_react.default.createElement(_components.Header.Title, {
+    to: "/"
+  }, "Mahanoro Station"), /*#__PURE__*/_react.default.createElement(_components.Header.Account, {
+    to: "/account"
   }, "My account"));
 }
 
@@ -39316,32 +39421,51 @@ var _components = require("../components");
 
 var _myAccount = require("../components/myAccount/style/myAccount");
 
+var _actions = require("../actions");
+
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function MyAccountCountainer() {
   const bookedTrips = (0, _reactRedux.useSelector)(state => state.booked);
-  const users = (0, _reactRedux.useSelector)(state => state.user);
+  const user = (0, _reactRedux.useSelector)(state => state.user);
   const seats = (0, _reactRedux.useSelector)(state => state.seats);
-  const [firstName, setFirstName] = (0, _react.useState)(users.firstName);
-  const [lastName, setLastName] = (0, _react.useState)(users.lastName);
-  const [phoneNbr, setPhoneNbr] = (0, _react.useState)(users.phoneNumber);
+  const [firstName, setFirstName] = (0, _react.useState)(user.firstName);
+  const [lastName, setLastName] = (0, _react.useState)(user.lastName);
+  const [phoneNbr, setPhoneNbr] = (0, _react.useState)(user.phoneNumber);
+  const dispatch = (0, _reactRedux.useDispatch)();
+
+  function update(e) {
+    e.preventDefault();
+    dispatch((0, _actions.changeFirstName)(firstName));
+    dispatch((0, _actions.changeLastName)(lastName));
+    dispatch((0, _actions.changePhoneNbr)(phoneNbr));
+    console.log(firstName, lastName);
+  }
+
   console.log(bookedTrips);
   return /*#__PURE__*/_react.default.createElement(_components.MyAccount, null, /*#__PURE__*/_react.default.createElement(_components.MyAccount.Pan, null, /*#__PURE__*/_react.default.createElement(_components.MyAccount.Title, null, /*#__PURE__*/_react.default.createElement("img", {
     src: "../icons/flat-ui_user-interface.svg"
-  })), /*#__PURE__*/_react.default.createElement(_components.MyAccount.SubTitle, null, "My personal informations"), /*#__PURE__*/_react.default.createElement(_components.MyAccount.Form, null, /*#__PURE__*/_react.default.createElement(_myAccount.InputLabel, null, "First name", /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_components.MyAccount.Input, {
-    value: firstName
+  })), /*#__PURE__*/_react.default.createElement(_components.MyAccount.SubTitle, null, "My personal informations"), /*#__PURE__*/_react.default.createElement(_components.MyAccount.Form, {
+    onSubmit: update
+  }, /*#__PURE__*/_react.default.createElement(_myAccount.InputLabel, null, "First name", /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_components.MyAccount.Input, {
+    value: firstName,
+    onChange: e => setFirstName(e.target.value)
   })), /*#__PURE__*/_react.default.createElement(_myAccount.InputLabel, null, "Last name", /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_components.MyAccount.Input, {
-    value: lastName
+    value: lastName,
+    onChange: e => setLastName(e.target.value)
   })), /*#__PURE__*/_react.default.createElement(_myAccount.InputLabel, null, "Phone number", /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_components.MyAccount.Input, {
     type: "tel",
-    value: phoneNbr
-  })), /*#__PURE__*/_react.default.createElement(_components.MyAccount.UpdateButton, null, "Update"))), /*#__PURE__*/_react.default.createElement(_components.MyAccount.Pan, null, /*#__PURE__*/_react.default.createElement(_components.MyAccount.Title, null, "My account: ", /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_components.MyAccount.Span, null, firstName, " \xA0 ", lastName)), /*#__PURE__*/_react.default.createElement(_components.MyAccount.SubTitle, null, "My booking:"), /*#__PURE__*/_react.default.createElement(_components.MyAccount.List, null, bookedTrips.length !== 0 ? bookedTrips.map(trip => /*#__PURE__*/_react.default.createElement(_components.MyAccount.Trip, {
+    value: phoneNbr,
+    onChange: e => setPhoneNbr(e.target.value)
+  })), /*#__PURE__*/_react.default.createElement(_components.MyAccount.UpdateButton, null, "Update"))), /*#__PURE__*/_react.default.createElement(_components.MyAccount.Pan, null, /*#__PURE__*/_react.default.createElement(_components.MyAccount.Title, null, "My account: ", /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_components.MyAccount.Span, null, user.firstName, " \xA0 ", user.lastName)), /*#__PURE__*/_react.default.createElement(_components.MyAccount.SubTitle, null, "My booking:"), /*#__PURE__*/_react.default.createElement(_components.MyAccount.List, null, bookedTrips.length !== 0 ? bookedTrips.map(trip => /*#__PURE__*/_react.default.createElement(_components.MyAccount.Trip, {
     key: trip.id
-  }, /*#__PURE__*/_react.default.createElement(_components.MyAccount.Group, null, /*#__PURE__*/_react.default.createElement(_components.MyAccount.Detail, null, trip.destination), /*#__PURE__*/_react.default.createElement(_components.MyAccount.Detail, null, new Date(trip.departureTime).toLocaleDateString(), ", ", new Date(trip.departureTime).getHours(), ":", new Date(trip.departureTime).getMinutes())), /*#__PURE__*/_react.default.createElement(_components.MyAccount.Group, null, /*#__PURE__*/_react.default.createElement(_components.MyAccount.Detail, null, seats.bookedSeats, "seat"), /*#__PURE__*/_react.default.createElement(_components.MyAccount.Detail, null, seats.totalPrice, "Ar")), /*#__PURE__*/_react.default.createElement(_components.MyAccount.CancelButton, null, "cancel"))) : "No trip booked")));
+  }, /*#__PURE__*/_react.default.createElement(_components.MyAccount.Group, null, /*#__PURE__*/_react.default.createElement(_components.MyAccount.Detail, null, trip.destination), /*#__PURE__*/_react.default.createElement(_components.MyAccount.Detail, null, new Date(trip.departureTime).toLocaleDateString(), ", ", new Date(trip.departureTime).getHours(), ":", new Date(trip.departureTime).getMinutes())), /*#__PURE__*/_react.default.createElement(_components.MyAccount.Group, null, /*#__PURE__*/_react.default.createElement(_components.MyAccount.Detail, null, trip.bookedSeats, "seats"), /*#__PURE__*/_react.default.createElement(_components.MyAccount.Detail, null, trip.totalPrice, "Ar")), /*#__PURE__*/_react.default.createElement(_components.MyAccount.CancelButton, {
+    onClick: () => dispatch((0, _actions.cancel)(trip.id))
+  }, "cancel"))) : "No trip booked")));
 }
-},{"react":"node_modules/react/index.js","react-redux":"node_modules/react-redux/es/index.js","../components":"src/components/index.js","../components/myAccount/style/myAccount":"src/components/myAccount/style/myAccount.js"}],"src/pages/MyAccount.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-redux":"node_modules/react-redux/es/index.js","../components":"src/components/index.js","../components/myAccount/style/myAccount":"src/components/myAccount/style/myAccount.js","../actions":"src/actions/index.js"}],"src/pages/MyAccount.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -39488,6 +39612,10 @@ const GlobalStyles = (0, _styledComponents.createGlobalStyle)`
         margin: 0;
         position: relative;
     }
+
+    button, a {
+        cursor: pointer;
+    }
 `;
 exports.GlobalStyles = GlobalStyles;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"node_modules/redux-thunk/es/index.js":[function(require,module,exports) {
@@ -39556,24 +39684,21 @@ function trips(state = [], action) {
   switch (action.type) {
     case "GET_TRIPS":
       return action.payload;
-    // case "BOOK_SEAT":{
-    //     const newArray = state.map(trip => {
-    //         if(trip.id === action.payload.id) {
-    //             return {...trip, 
-    //                     seats: trip.seats.map(seat => {
-    //                         if(seat.id === action.seatId) {
-    //                             return{
-    //                                 ...seat,
-    //                                 isAvailable: !isAvailable
-    //                             }
-    //                         }
-    //                     })
-    //                 }
-    //         }
-    //         return song
-    //     }) 
-    //     return newArray
-    // }
+
+    case "PICK_SEAT":
+      {
+        const newArray = state.map(trip => {
+          trip.seats.map(seat => {
+            if (seat.id == action.payload) {
+              return { ...seat,
+                isAvailable: !seat.isAvailable
+              };
+            }
+          });
+          return trip;
+        });
+        return newArray;
+      }
 
     default:
       return state;
@@ -39583,7 +39708,12 @@ function trips(state = [], action) {
 function booked(state = [], action) {
   switch (action.type) {
     case "BOOK_SEAT":
-      return [...state, action.payload];
+      const newObject = Object.assign(action.payload, action.payload[booked] = action.seat);
+      return [...state, newObject];
+
+    case "CANCEL_TRIP":
+      const newArray = state.filter(item => item.id !== action.payload);
+      return [...newArray];
 
     default:
       return state;
@@ -39606,6 +39736,18 @@ function seats(state = {}, action) {
         totalPrice: state.totalPrice + action.payload
       };
 
+    case "RESET_SEATS":
+      return {
+        bookedSeats: 0,
+        totalPrice: 0
+      };
+
+    case "UNBOOK":
+      return { ...state,
+        bookedSeats: state.bookedSeats - 1,
+        totalPrice: state.totalPrice - action.payload
+      };
+
     default:
       return state;
   }
@@ -39615,17 +39757,17 @@ function updateUser(state = {}, action) {
   switch (action.type) {
     case "SET_FIRST_NAME":
       return { ...state,
-        firstName: state.payload
+        firstName: action.payload
       };
 
     case "SET_LAST_NAME":
       return { ...state,
-        lastName: state.payload
+        lastName: action.payload
       };
 
     case "SET_PHONE_NUMBER":
       return { ...state,
-        phoneNumber: state.payload
+        phoneNumber: action.payload
       };
 
     default:
@@ -39713,7 +39855,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50503" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62225" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

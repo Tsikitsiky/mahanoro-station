@@ -7,4 +7,8 @@ export const GlobalStyles = createGlobalStyle`
         margin: 0;
         position: relative;
     }
+
+    button, a {
+        cursor: pointer;
+    }
 `;

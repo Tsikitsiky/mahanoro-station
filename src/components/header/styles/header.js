@@ -11,6 +11,11 @@ export const Container = styled.div`
 `;
 export const Title = styled.h1`
     font-size: 36px;
+    background-image: url('../icons/bus-small.svg');
+    background-repeat: no-repeat;
+    background-size: 32px;
+    background-position: left;
+    padding-left: 4rem;
 `;
 
 export const Link = styled(ReachRouterLink)`

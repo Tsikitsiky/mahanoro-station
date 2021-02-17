@@ -52,10 +52,11 @@ export const Trip = styled.li`
     background-repeat: no-repeat;
     background-size: 65px;
     background-position: left;
-    padding-left: 5rem;
+    padding-left: 7rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 1rem;
 `;
 export const Group = styled.div`
     display: flex;
@@ -76,6 +77,7 @@ export const CancelButton = styled.button`
     outline: none;
     border: none;
     background-color: #FF8906;
+    padding: 1rem 1.5rem;
 `;
 export const UpdateButton = styled.button`
     background-color: #E53170;

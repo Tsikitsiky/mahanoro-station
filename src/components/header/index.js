@@ -7,8 +7,10 @@ export default function Header({children, ...restProps}) {
     )
 }
 
-Header.Title = function HeaderTitle({children, ...restProps}) {
-    return <Title {...restProps}>{children}</Title>
+Header.Title = function HeaderTitle({to, children, ...restProps}) {
+    return <Link to={to} {...restProps}>
+            <Title {...restProps}>{children}</Title>
+        </Link>
 }
 
 Header.Account = function HeaderAccount({to, children, ...restProps}) {
